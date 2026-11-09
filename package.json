@@ -2,7 +2,6 @@
   "name": "serveqrew-app",
   "version": "1.0.0",
   "main": "index.js",
-
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
@@ -23,6 +22,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
+    "supabase": "^3.0.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^7.0.2"
   }
