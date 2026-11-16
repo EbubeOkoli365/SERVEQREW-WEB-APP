@@ -1,11 +1,27 @@
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { AuthShell } from './components/auth/AuthShell'
+import { AuthShowcasePanel } from './components/auth/AuthShowcasePanel'
+import { ForgotPasswordScreen } from './pages/auth/ForgotPasswordScreen'
+import { LoginScreen } from './pages/auth/LoginScreen'
+import { PasswordResetScreen } from './pages/auth/PasswordResetScreen'
+import { SignupScreen } from './pages/auth/SignupScreen'
+
 function App() {
+  const location = useLocation()
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-6 text-slate-900">
-      <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-semibold">ServeQrew Frontend</h1>
-        <p className="mt-2 text-sm text-slate-600">Application shell ready.</p>
+    <AuthShell showcase={<AuthShowcasePanel />}>
+      <div key={location.pathname} className="auth-route-transition h-full w-full">
+        <Routes location={location}>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/signup" element={<SignupScreen />} />
+          <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
+          <Route path="/reset-password" element={<PasswordResetScreen />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
       </div>
-    </main>
+    </AuthShell>
   )
 }
 
