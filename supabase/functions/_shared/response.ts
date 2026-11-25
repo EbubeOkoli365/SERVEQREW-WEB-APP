@@ -23,4 +23,3 @@ export function errorResponse(
         status
     );
 }
-
